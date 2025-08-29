@@ -1,0 +1,74 @@
+#%RAML 1.0
+title: orderInformation
+version: v1
+mediaType: application/json
+description: This API gives about order related information to the customers
+
+types:
+  order-request: !include order-request.raml
+
+traits:
+  error: !include error-response-trait.raml
+  client-credentials: !include client-credentials.raml
+
+
+/orders:
+  description: This endpoint for Create a new order
+  post:
+    is: [error, client-credentials]
+    body:
+      application/json:
+        type: order-request
+        example: !include order-create-request-payload-.json
+          
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                            "status": "order created successfully",
+                            "orderId": "ORD01"
+                        }
+
+  get:
+    is: [error, client-credentials]
+    description: "This endpoint gives all orders"
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            example: !include get-request-payload.json
+              
+/orders/{orderId}:
+  uriParameters:
+      orderId:
+          type: string
+          example: "ORD01"
+  put:
+    is: [error, client-credentials]
+    description: "This endpoint gives update order by orderId"
+    body:
+      application/json:
+        type: order-request
+        example: !include order-create-request-payload-.json
+           
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {
+                "message": "order updated successfully"
+                        }
+  get:
+    description: "This endpoint gives Retrive specific order by orderId"
+    is: [error, client-credentials]
+    responses:
+      200:
+        body:
+          application/json:
+            type: order-request
+            example: !include order-create-request-payload-.json  
+                

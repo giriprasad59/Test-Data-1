@@ -1,0 +1,14 @@
+[
+  {
+  "orderId": "ORD01",
+  "customerId": "CUST001",
+  "orderDate": "2025-08-28",
+  "status": "pending",
+  "items": {
+    "productId": "PD01",
+    "productName": "Mouse",
+    "quantity": 1,
+    "price": 500
+  }
+}
+]

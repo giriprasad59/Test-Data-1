@@ -1,0 +1,28 @@
+#%RAML 1.0 Trait
+responses:
+  400:
+    description: Bad Request
+    body:
+      application/json:
+          example: {
+              "errorCode": "400",
+              "message": "Invalid request payload"
+          }
+  404:
+    description: Not Found
+    body:
+        application/json:
+            example: {
+                "errorCode": "404",
+                "message": "Order not found"
+            }
+  500:
+      description: Internal Server Error
+      body:
+          application/json:
+              example: {
+                  "errorCode": "500",
+                  "message": "Something went wrong"
+              }
+
+                               

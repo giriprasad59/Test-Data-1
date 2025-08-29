@@ -1,0 +1,39 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  orderId:
+    type: string
+    required: true
+    example: "ORD01"
+  customerId:
+    type: string
+    required: true
+    example: "CUST001"
+  orderDate:
+    type: date-only
+    required: true
+    example: "2025-08-28"
+  status:
+    type: string
+    required: true
+    example: "pending"
+  items:
+    type: object
+    properties:
+      productId:
+        type: string
+        required: true
+        example: "PD01"
+      productName:
+        type: string
+        required: true
+        example: "Mouse"
+      quantity:
+        type: integer
+        required: true
+        example: 1
+      price:
+        type: number
+        required: true
+        example: 500.00
+  

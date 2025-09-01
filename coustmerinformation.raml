@@ -1,0 +1,102 @@
+#%RAML 1.0
+title: customerInformation
+version: v1
+ 
+/createCustomer:
+    description: This endpoint gives the to create customer
+    post:
+        body:
+            application/json:
+                example: {
+                    "customerId": "CUST001",
+                    "name": "Mahesh",
+                    "email": "mahesh@gmail.com",
+                    "phone": 9876543212,
+                    "address": {
+                        "city": "bangalore",
+                        "state": "karnataka",
+                        "country": "India"
+                    }
+                }
+        responses:
+            201:
+                body:
+                    application/json:
+                        example: {
+                            "status": "customer details created successfully",
+                            "customerId": "CUST001"
+                        }        
+/getCustomers:
+    description: This endpoint gives all customers data
+    get:
+        responses:
+            200:
+                body:
+                    application/json:
+                        example:  [
+                            {
+                    "customerId": "CUST001",
+                    "name": "Mahesh",
+                    "email": "mahesh@gmail.com",
+                    "phone": 9876543212,
+                    "address": {
+                        "city": "bangalore",
+                        "state": "karnataka",
+                        "country": "India"
+                    }
+                },
+                {
+                    "customerId": "CUST001",
+                    "name": "Mahesh",
+                    "email": "mahesh@gmail.com",
+                    "phone": 9876543212,
+                    "address": {
+                        "city": "bangalore",
+                        "state": "karnataka",
+                        "country": "India"
+                    }
+                }
+                        ]          
+/customers/{customerId}:
+    uriParameters:
+        customerId: string
+    get:
+        description: This gives the specific customer data
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: {
+                    "customerId": "CUST001",
+                    "name": "Mahesh",
+                    "email": "mahesh@gmail.com",
+                    "phone": 9876543212,
+                    "address": {
+                        "city": "bangalore",
+                        "state": "karnataka",
+                        "country": "India"
+                    }
+                }
+    put:
+        description: This endoint gives the update the customer information
+        body:
+            application/json:
+                example: {
+                        "customerId": "CUST001",
+                        "name": "Mahesh",
+                        "email": "mahesh@gmail.com",
+                        "phone": 9876543212,
+                        "address": {
+                            "city": "bangalore",
+                            "state": "karnataka",
+                            "country": "India"
+                        }
+                    }
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: {
+                            "status": "customer details updated successfully"
+                        }
+ 

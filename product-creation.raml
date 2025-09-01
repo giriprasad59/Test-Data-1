@@ -1,0 +1,103 @@
+#%RAML 1.0
+title: productInformation
+version: v1
+ 
+/createProduct:
+  description: This endpoint creates a new product
+  post:
+    body:
+      application/json:
+        example: {
+          "productId": "PROD001",
+          "name": "Wireless Mouse",
+          "category": "Electronics",
+          "price": 799.99,
+          "stock": 150,
+          "manufacturer": {
+            "name": "TechGear",
+            "country": "India"
+          }
+        }
+    responses:
+      201:
+        body:
+          application/json:
+            example: {
+              "status": "product created successfully",
+              "productId": "PROD001"
+            }
+ 
+/getProducts:
+  description: This endpoint retrieves all product data
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: [
+              {
+                "productId": "PROD001",
+                "name": "Wireless Mouse",
+                "category": "Electronics",
+                "price": 799.99,
+                "stock": 150,
+                "manufacturer": {
+                  "name": "TechGear",
+                  "country": "India"
+                }
+              },
+              {
+                "productId": "PROD002",
+                "name": "Bluetooth Keyboard",
+                "category": "Electronics",
+                "price": 1299.99,
+                "stock": 80,
+                "manufacturer": {
+                  "name": "KeyMasters",
+                  "country": "India"
+                }
+              }
+            ]
+ 
+/products/{productId}:
+  uriParameters:
+    productId: string
+  get:
+    description: This endpoint retrieves specific product data
+    responses:
+      200:
+        body:
+          application/json:
+            example: {
+              "productId": "PROD001",
+              "name": "Wireless Mouse",
+              "category": "Electronics",
+              "price": 799.99,
+              "stock": 150,
+              "manufacturer": {
+                "name": "TechGear",
+                "country": "India"
+              }
+            }
+  put:
+    description: This endpoint updates product information
+    body:
+      application/json:
+        example: {
+          "productId": "PROD001",
+          "name": "Wireless Mouse",
+          "category": "Electronics",
+          "price": 749.99,
+          "stock": 140,
+          "manufacturer": {
+            "name": "TechGear",
+            "country": "India"
+          }
+        }
+    responses:
+      200:
+        body:
+          application/json:
+            example: {
+              "status": "product details updated successfully"
+            }
